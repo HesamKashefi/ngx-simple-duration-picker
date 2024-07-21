@@ -1,19 +1,22 @@
 <form [formGroup]="form">
-    <input type="number"
-           formControlName="hours"
-           placeholder="H"
-           min="0">
+       <input type="number"
+              formControlName="hours"
+              placeholder="H"
+              min="0"
+              [readOnly]="readOnly">
 
-    <input type="number"
-           formControlName="minutes"
-           placeholder="M"
-           min="0"
-           max="59">
+       <input type="number"
+              formControlName="minutes"
+              placeholder="M"
+              min="0"
+              max="59"
+              [readOnly]="readOnly">
 
-    <input type="number"
-           formControlName="seconds"
-           placeholder="S"
-           name="seconds"
-           min="0"
-           max="59">
+       <input type="number"
+              formControlName="seconds"
+              placeholder="S"
+              name="seconds"
+              min="0"
+              max="59"
+              [readOnly]="readOnly">
 </form>

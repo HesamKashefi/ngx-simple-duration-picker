@@ -15,4 +15,6 @@ export class AppComponent {
   title = 'demo-app';
 
   model: Duration = new Duration(1, 10, 20);
+
+  totalSeconds: number = 0;
 }

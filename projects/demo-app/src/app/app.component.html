@@ -11,4 +11,15 @@
 </p>
 }
 
+
+<div style="display: flex; justify-content: flex-start;">
+  <NgxDurationPicker [(ngModel)]="totalSeconds"
+                     [outputValueAsTotalSeconds]="true">
+  </NgxDurationPicker>
+</div>
+@if(totalSeconds >= 0) {
+<p>
+  Total Seconds: {{ totalSeconds }}
+</p>
+}
 <router-outlet />
