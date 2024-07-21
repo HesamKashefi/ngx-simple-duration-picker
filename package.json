@@ -1,6 +1,21 @@
 {
   "name": "ngx-duration-picker-lib",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": {
+    "name": "Hesam Kashefi",
+    "url": "https://hesamkashefi.com"
+  },
+  "repository": {
+    "url": "https://github.com/HesamKashefi/ngx-duration-picker"
+  },
+  "keywords": [
+    "duration",
+    "duration picker",
+    "hours",
+    "minutes",
+    "seconds",
+    "angular"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",

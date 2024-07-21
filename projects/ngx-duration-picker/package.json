@@ -1,6 +1,21 @@
 {
   "name": "ngx-duration-picker",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "author": {
+    "name": "Hesam Kashefi",
+    "url": "https://hesamkashefi.com"
+  },
+  "repository": {
+    "url": "https://github.com/HesamKashefi/ngx-duration-picker"
+  },
+  "keywords": [
+    "duration",
+    "duration picker",
+    "hours",
+    "minutes",
+    "seconds",
+    "angular"
+  ],
   "peerDependencies": {
     "@angular/common": "^18.1.0",
     "@angular/core": "^18.1.0"
