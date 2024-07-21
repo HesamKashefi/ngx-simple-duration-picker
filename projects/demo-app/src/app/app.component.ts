@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NgxDurationPickerComponent } from '../../../ngx-duration-picker/src/public-api';
+import { Duration } from '../../../ngx-duration-picker/src/lib/duration';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NgxDurationPickerComponent, FormsModule, ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'demo-app';
+
+  model: Duration = new Duration(1, 10, 20);
 }
