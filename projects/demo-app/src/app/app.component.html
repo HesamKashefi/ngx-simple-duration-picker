@@ -12,14 +12,14 @@
 }
 
 
-<div style="display: flex; justify-content: flex-start;">
-  <NgxDurationPicker [(ngModel)]="totalSeconds"
-                     [outputValueAsTotalSeconds]="true">
+<form [formGroup]="form"
+      style="display: flex; justify-content: flex-start;">
+  <NgxDurationPicker formControlName="totalSeconds"
+                     [outputValueAsTotalSeconds]="true"
+                     (valueChagned)="valueChanged($event)">
   </NgxDurationPicker>
-</div>
-@if(totalSeconds >= 0) {
+</form>
 <p>
-  Total Seconds: {{ totalSeconds }}
+  Total Seconds: {{ form.value.totalSeconds }}
 </p>
-}
 <router-outlet />

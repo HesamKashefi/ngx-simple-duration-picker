@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgxDurationPickerComponent } from '../../../ngx-duration-picker/src/public-api';
 import { Duration } from '../../../ngx-duration-picker/src/lib/duration';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class AppComponent {
   title = 'demo-app';
 
+  form = new FormGroup({
+    totalSeconds: new FormControl(3652)
+  })
+
   model: Duration = new Duration(1, 10, 20);
 
-  totalSeconds: number = 0;
+  valueChanged(event: number | Duration) {
+    console.log(event);
+
+  }
 }

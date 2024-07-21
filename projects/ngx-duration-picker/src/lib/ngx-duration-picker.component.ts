@@ -2,7 +2,7 @@ import { Component, DestroyRef, EventEmitter, forwardRef, inject, Input, OnInit,
 import { ControlValueAccessor, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Duration } from './duration';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { debounceTime } from 'rxjs';
+import { debounceTime, filter } from 'rxjs';
 
 @Component({
   selector: 'NgxDurationPicker',
@@ -20,6 +20,7 @@ import { debounceTime } from 'rxjs';
 })
 export class NgxDurationPickerComponent implements OnInit, ControlValueAccessor {
   private destroyRef$ = inject(DestroyRef);
+  private isProgramatic = false;
 
   @Input()
   readOnly: boolean = false;
@@ -27,18 +28,32 @@ export class NgxDurationPickerComponent implements OnInit, ControlValueAccessor 
   @Input()
   outputValueAsTotalSeconds = false;
 
-  @Output()
-  valueChagned = new EventEmitter<Duration | number>();
-
-  onChange: any;
-  onTouch: any;
-  writeValue(obj: Duration | number): void {
+  @Input()
+  set value(obj: Duration | number) {
+    this.isProgramatic = true;
     if (obj instanceof Duration) {
       this.form.patchValue(obj);
     }
     else {
       this.form.patchValue(Duration.fromSeconds(+obj));
     }
+    this.isProgramatic = false;
+  }
+
+  @Output()
+  valueChagned = new EventEmitter<Duration | number>();
+
+  onChange: any;
+  onTouch: any;
+  writeValue(obj: Duration | number): void {
+    this.isProgramatic = true;
+    if (obj instanceof Duration) {
+      this.form.patchValue(obj);
+    }
+    else {
+      this.form.patchValue(Duration.fromSeconds(+obj));
+    }
+    this.isProgramatic = false;
   }
   registerOnChange(fn: any): void {
     this.onChange = fn
@@ -64,6 +79,7 @@ export class NgxDurationPickerComponent implements OnInit, ControlValueAccessor 
   ngOnInit(): void {
     this.form.valueChanges
       .pipe(
+        filter(() => !this.isProgramatic),
         debounceTime(100),
         takeUntilDestroyed(this.destroyRef$)
       )
