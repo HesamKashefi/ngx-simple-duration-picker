@@ -5,7 +5,7 @@
   "compilerOptions": {
     "paths": {
       "NgxSimpleDurationPicker": [
-        "./dist/ngx-duration-picker"
+        "./dist/ngx-simple-duration-picker"
       ]
     },
     "outDir": "./dist/out-tsc",

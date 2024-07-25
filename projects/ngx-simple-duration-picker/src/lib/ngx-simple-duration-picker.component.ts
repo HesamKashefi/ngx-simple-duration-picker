@@ -8,8 +8,8 @@ import { debounceTime, filter } from 'rxjs';
   selector: 'NgxSimpleDurationPicker',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule],
-  templateUrl: './ngx-duration-picker.component.html',
-  styleUrls: ['./ngx-duration-picker.component.scss'],
+  templateUrl: './ngx-simple-duration-picker.component.html',
+  styleUrls: ['./ngx-simple-duration-picker.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

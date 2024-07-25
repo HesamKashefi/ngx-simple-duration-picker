@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxSimpleDurationPickerComponent } from './ngx-duration-picker.component';
+import { NgxSimpleDurationPickerComponent } from './ngx-simple-duration-picker.component';
 
 describe('NgxSimpleDurationPickerComponent', () => {
   let component: NgxSimpleDurationPickerComponent;

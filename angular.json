@@ -5,21 +5,21 @@
   "projects": {
     "NgxSimpleDurationPicker": {
       "projectType": "library",
-      "root": "projects/ngx-duration-picker",
-      "sourceRoot": "projects/ngx-duration-picker/src",
+      "root": "projects/ngx-simple-duration-picker",
+      "sourceRoot": "projects/ngx-simple-duration-picker/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ngx-duration-picker/ng-package.json"
+            "project": "projects/ngx-simple-duration-picker/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-duration-picker/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-simple-duration-picker/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ngx-duration-picker/tsconfig.lib.json"
+              "tsConfig": "projects/ngx-simple-duration-picker/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -27,7 +27,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/ngx-duration-picker/tsconfig.spec.json",
+            "tsConfig": "projects/ngx-simple-duration-picker/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

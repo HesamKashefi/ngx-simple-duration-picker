@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NgxSimpleDurationPickerComponent } from '../../../ngx-duration-picker/src/public-api';
-import { Duration } from '../../../ngx-duration-picker/src/lib/duration';
+import { NgxSimpleDurationPickerComponent } from '../../../ngx-simple-duration-picker/src/public-api';
+import { Duration } from '../../../ngx-simple-duration-picker/src/lib/duration';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
