@@ -4,5 +4,5 @@ contact_links:
       url: https://github.com/HesamKashefi/ngx-simple-duration-picker
       about: Be sure you've read the docs!
     - name: Checkout The Demo
-      url: https://stackblitz.com/edit/ngxsuperselect-demo
+      url: https://stackblitz.com/edit/ngx-simple-picker-duration
       about: Have you seen the Demo?
