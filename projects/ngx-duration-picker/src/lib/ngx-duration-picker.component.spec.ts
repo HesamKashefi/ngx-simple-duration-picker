@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxDurationPickerComponent } from './ngx-duration-picker.component';
+import { NgxSimpleDurationPickerComponent } from './ngx-duration-picker.component';
 
-describe('NgxDurationPickerComponent', () => {
-  let component: NgxDurationPickerComponent;
-  let fixture: ComponentFixture<NgxDurationPickerComponent>;
+describe('NgxSimpleDurationPickerComponent', () => {
+  let component: NgxSimpleDurationPickerComponent;
+  let fixture: ComponentFixture<NgxSimpleDurationPickerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgxDurationPickerComponent]
+      imports: [NgxSimpleDurationPickerComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NgxDurationPickerComponent);
+    fixture = TestBed.createComponent(NgxSimpleDurationPickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

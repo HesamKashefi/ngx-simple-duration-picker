@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NgxDurationPickerService } from './ngx-duration-picker.service';
+import { NgxSimpleDurationPickerService } from './ngx-duration-picker.service';
 
-describe('NgxDurationPickerService', () => {
-  let service: NgxDurationPickerService;
+describe('NgxSimpleDurationPickerService', () => {
+  let service: NgxSimpleDurationPickerService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NgxDurationPickerService);
+    service = TestBed.inject(NgxSimpleDurationPickerService);
   });
 
   it('should be created', () => {

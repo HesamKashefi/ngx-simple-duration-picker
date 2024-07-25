@@ -5,7 +5,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, filter } from 'rxjs';
 
 @Component({
-  selector: 'NgxDurationPicker',
+  selector: 'NgxSimpleDurationPicker',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './ngx-duration-picker.component.html',
@@ -13,12 +13,12 @@ import { debounceTime, filter } from 'rxjs';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NgxDurationPickerComponent),
+      useExisting: forwardRef(() => NgxSimpleDurationPickerComponent),
       multi: true
     }
   ]
 })
-export class NgxDurationPickerComponent implements OnInit, ControlValueAccessor {
+export class NgxSimpleDurationPickerComponent implements OnInit, ControlValueAccessor {
   private destroyRef$ = inject(DestroyRef);
   private isProgramatic = false;
 

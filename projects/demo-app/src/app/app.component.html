@@ -1,6 +1,6 @@
 <div style="display: flex; justify-content: flex-start;">
-  <NgxDurationPicker [(ngModel)]="model">
-  </NgxDurationPicker>
+  <NgxSimpleDurationPicker [(ngModel)]="model">
+  </NgxSimpleDurationPicker>
 </div>
 @if(model) {
 <p>
@@ -14,10 +14,10 @@
 
 <form [formGroup]="form"
       style="display: flex; justify-content: flex-start;">
-  <NgxDurationPicker formControlName="totalSeconds"
+  <NgxSimpleDurationPicker formControlName="totalSeconds"
                      [outputValueAsTotalSeconds]="true"
                      (valueChagned)="valueChanged($event)">
-  </NgxDurationPicker>
+  </NgxSimpleDurationPicker>
 </form>
 <p>
   Total Seconds: {{ form.value.totalSeconds }}

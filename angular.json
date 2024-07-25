@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "NgxDurationPicker": {
+    "NgxSimpleDurationPicker": {
       "projectType": "library",
       "root": "projects/ngx-duration-picker",
       "sourceRoot": "projects/ngx-duration-picker/src",
