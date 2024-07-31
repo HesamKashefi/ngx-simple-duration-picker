@@ -15,8 +15,8 @@
 <form [formGroup]="form"
       style="display: flex; justify-content: flex-start;">
   <NgxSimpleDurationPicker formControlName="totalSeconds"
-                     [outputValueAsTotalSeconds]="true"
-                     (valueChagned)="valueChanged($event)">
+                           [considerValueAsTotalSeconds]="true"
+                           (valueChagned)="valueChanged($event)">
   </NgxSimpleDurationPicker>
 </form>
 <p>

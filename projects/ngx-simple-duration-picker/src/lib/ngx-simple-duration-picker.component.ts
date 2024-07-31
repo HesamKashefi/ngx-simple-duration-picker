@@ -1,5 +1,5 @@
 import { Component, DestroyRef, EventEmitter, forwardRef, inject, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule, TouchedChangeEvent, Validators } from '@angular/forms';
 import { Duration } from './duration';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, filter } from 'rxjs';
@@ -21,23 +21,17 @@ import { debounceTime, filter } from 'rxjs';
 export class NgxSimpleDurationPickerComponent implements OnInit, ControlValueAccessor {
   private destroyRef$ = inject(DestroyRef);
   private isProgramatic = false;
+  private originalValue: Duration = new Duration(0, 0, 0);
 
   @Input()
   readOnly: boolean = false;
 
   @Input()
-  outputValueAsTotalSeconds = false;
+  considerValueAsTotalSeconds = false;
 
   @Input()
   set value(obj: Duration | number) {
-    this.isProgramatic = true;
-    if (obj instanceof Duration) {
-      this.form.patchValue(obj);
-    }
-    else {
-      this.form.patchValue(Duration.fromSeconds(+obj));
-    }
-    this.isProgramatic = false;
+    this.setValue(obj);
   }
 
   @Output()
@@ -45,15 +39,9 @@ export class NgxSimpleDurationPickerComponent implements OnInit, ControlValueAcc
 
   onChange: any;
   onTouch: any;
+
   writeValue(obj: Duration | number): void {
-    this.isProgramatic = true;
-    if (obj instanceof Duration) {
-      this.form.patchValue(obj);
-    }
-    else {
-      this.form.patchValue(Duration.fromSeconds(+obj));
-    }
-    this.isProgramatic = false;
+    this.setValue(obj);
   }
   registerOnChange(fn: any): void {
     this.onChange = fn
@@ -61,6 +49,7 @@ export class NgxSimpleDurationPickerComponent implements OnInit, ControlValueAcc
   registerOnTouched(fn: any): void {
     this.onTouch = fn
   }
+
   setDisabledState?(isDisabled: boolean): void {
     if (isDisabled) {
       this.form.disable();
@@ -77,6 +66,14 @@ export class NgxSimpleDurationPickerComponent implements OnInit, ControlValueAcc
   });
 
   ngOnInit(): void {
+    this.form.events
+      .pipe(takeUntilDestroyed(this.destroyRef$))
+      .subscribe(e => {
+        if (e instanceof TouchedChangeEvent && e.touched && this.onTouch) {
+          this.onTouch();
+        }
+      })
+
     this.form.valueChanges
       .pipe(
         filter(() => !this.isProgramatic),
@@ -119,8 +116,10 @@ export class NgxSimpleDurationPickerComponent implements OnInit, ControlValueAcc
           return;
         }
 
-        if (this.onChange) {
-          if (this.outputValueAsTotalSeconds) {
+        console.log(this.onChange);
+
+        if (this.onChange && this.originalValue.toSeconds() !== duration.toSeconds()) {
+          if (this.considerValueAsTotalSeconds) {
             this.onChange(duration.toSeconds());
           }
           else {
@@ -128,12 +127,25 @@ export class NgxSimpleDurationPickerComponent implements OnInit, ControlValueAcc
           }
         }
 
-        if (this.outputValueAsTotalSeconds) {
+        if (this.considerValueAsTotalSeconds) {
           this.valueChagned.emit(duration.toSeconds());
         }
         else {
           this.valueChagned.emit(duration);
         }
       });
+  }
+
+  private setValue(obj: Duration | number) {
+    this.isProgramatic = true;
+    if (obj instanceof Duration) {
+      this.originalValue = obj;
+      this.form.patchValue(obj);
+    }
+    else {
+      this.originalValue = Duration.fromSeconds(+obj);
+      this.form.patchValue(Duration.fromSeconds(+obj));
+    }
+    this.isProgramatic = false;
   }
 }
