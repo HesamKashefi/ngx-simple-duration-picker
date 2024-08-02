@@ -116,8 +116,6 @@ export class NgxSimpleDurationPickerComponent implements OnInit, ControlValueAcc
           return;
         }
 
-        console.log(this.onChange);
-
         if (this.onChange && this.originalValue.toSeconds() !== duration.toSeconds()) {
           if (this.considerValueAsTotalSeconds) {
             this.onChange(duration.toSeconds());
