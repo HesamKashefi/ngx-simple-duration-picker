@@ -87,14 +87,12 @@ export class NgxSimpleDurationPickerComponent implements OnInit, ControlValueAcc
         if (rawValue.seconds >= 60 || rawValue.minutes >= 60) {
           if (rawValue.seconds >= 60) {
             this.form.patchValue({
-              minutes: rawValue.minutes + Math.floor(rawValue.seconds / 60),
-              seconds: rawValue.seconds % 60
+              seconds: 59
             });
           }
           if (rawValue.minutes >= 60) {
             this.form.patchValue({
-              hours: rawValue.hours + Math.floor(rawValue.minutes / 60),
-              minutes: rawValue.minutes % 60
+              minutes: 59
             });
           }
           return;
@@ -140,9 +138,13 @@ export class NgxSimpleDurationPickerComponent implements OnInit, ControlValueAcc
       this.originalValue = obj;
       this.form.patchValue(obj);
     }
-    else {
+    else if (!isNaN(+obj)) {
       this.originalValue = Duration.fromSeconds(+obj);
       this.form.patchValue(Duration.fromSeconds(+obj));
+    }
+    else {
+      this.originalValue = Duration.fromSeconds(0);
+      this.form.patchValue(Duration.fromSeconds(0));
     }
     this.isProgramatic = false;
   }
